@@ -1,0 +1,22 @@
+
+
+
+.body {
+    background-color: lightsalmon;
+}
+
+.title {
+    text-decoration: underline double;
+}
+
+.input {
+
+    border: none;
+}
+
+.submitBtn {
+    border-radius: 0 40% 40% 0;
+    color:  lightsalmon;
+    border: none;
+    background-color: lightsalmon;
+}

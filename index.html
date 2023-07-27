@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List</title>
+    <title>To-do List</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -12,8 +12,14 @@
     <script type="module" src="/app.js"></script>
 </head>
 
-<body>
-  
+<body class="body">
+    <header class="col-10 mt-5 w-80 mx-auto text-center text-white bg-dark rounded-pill">
+        <h1 class="title h1 pt-3 mb-4 text-center font-italic">To-do List</h1>
+        <form class="col pb-4">
+            <input type="text" class="input p-3" placeholder="Enter you are task...">
+            <button type="submit" class="submitBtn p-3 text-white" >Submit</button>
+        </form>
+    </header>
       
 </body>
 
