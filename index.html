@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<div id="success-alert" class="alert alert-success text-center " role="alert">
+    Successfully entered a task!
+</div>
+
+<div id="fail-alert" class="alert alert-danger text-center" role="alert">
+    Please write something task!
+  </div>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,13 +22,18 @@
 
 <body class="body">
     <header class="col-11 mt-5 mx-auto text-center text-white bg-dark rounded-pill">
-        <h1 class="title h1 pt-3 mb-2 text-center font-italic">To-do List</h1>
+        <h1 id="title" class="title h1 pt-3 mb-2 text-center font-italic">To-do List</h1>
         <form class="col-12 pb-4">
-            <input type="text" class="col-10 col-xl-4 col-md-6 col-sm-8 rounded input p-3 mt-3 " placeholder="Enter you are task...">
-            <button type="submit" class="col-4 col-xl-1 col-md-2  col-sm-2 mt-3 rounded submitBtn p-3 text-white" >Submit</button>
+            <input id="todoInput" type="text" class="col-10 col-xl-4 col-md-6 col-sm-8 rounded input p-3 mt-3 " placeholder="Enter you are To-do...">
+            <button id="addBtn" type="submit" class="col-4 col-xl-1 col-md-2  col-sm-2 mt-3 rounded p-3 text-white" >Submit</button>
         </form>
     </header>
       
+    <main class="main col-11 mx-auto text-center text-white bg-dark rounded-pill mt-5">
+       <ul id="todoList" class="col">
+    
+       </ul>
+    </main>
 </body>
 
 </html>

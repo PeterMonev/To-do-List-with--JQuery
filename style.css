@@ -25,21 +25,33 @@ ul {
   background-color: lightsalmon;
 }
 
-.title {
+/* ALERTS */
+
+#success-alert {
+  display: none;
+}
+
+#fail-alert {
+  display: none;
+}
+
+/* HEADER */
+
+#title {
   text-decoration: underline double;
 }
 
-.input {
+#todoInput {
   border: none;
 }
 
-.submitBtn {
+#addBtn {
   color: lightsalmon;
   border: none;
   background-color: lightsalmon;
 }
 
-.submitBtn:hover {
+#addBtn:hover {
   color: lightsalmon !important;
   background-color: black;
   border: 2px solid salmon;
