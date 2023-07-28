@@ -1,22 +1,47 @@
+/* RESET */
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+button {
+  border: 0;
+  background-color: unset;
+  cursor: pointer;
+}
+
+ol,
+ul {
+  list-style-type: none;
+}
+
+/* APP STYLES */
 
 .body {
-    background-color: lightsalmon;
+  background-color: lightsalmon;
 }
 
 .title {
-    text-decoration: underline double;
+  text-decoration: underline double;
 }
 
 .input {
-
-    border: none;
+  border: none;
 }
 
 .submitBtn {
-    border-radius: 0 40% 40% 0;
-    color:  lightsalmon;
-    border: none;
-    background-color: lightsalmon;
+  color: lightsalmon;
+  border: none;
+  background-color: lightsalmon;
+}
+
+.submitBtn:hover {
+  color: lightsalmon !important;
+  background-color: black;
+  border: 2px solid salmon;
+  transition: 1s;
 }
