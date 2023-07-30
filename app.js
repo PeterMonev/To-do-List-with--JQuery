@@ -2,6 +2,8 @@ $(document).ready(function () {
   getLocalStorage();
 });
 
+$("#clearBtn").click(clearAllList)
+
 $("#addBtn").click(function (event) {
   event.preventDefault();
   const task = $("#todoInput").val();
@@ -40,6 +42,12 @@ function getLocalStorage() {
   });
 }
 
+function clearAllList(){
+  localStorage.clear();
+  getLocalStorage();
+}
+
+
 function createLi(task) {
   $("#todoList").append(
     `
@@ -57,6 +65,6 @@ function createLi(task) {
      </svg></i></button>
        </div>
        </li>
-       `
+    `
   );
 }

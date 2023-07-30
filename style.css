@@ -45,15 +45,18 @@ ul {
   border: none;
 }
 
-#addBtn {
+#addBtn,#clearBtn {
   color: lightsalmon;
   border: none;
   background-color: lightsalmon;
 }
 
-#addBtn:hover {
+#addBtn:hover,
+#clearBtn:hover {
   color: lightsalmon !important;
   background-color: black;
   border: 2px solid salmon;
   transition: 1s;
 }
+
+
