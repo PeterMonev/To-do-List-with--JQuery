@@ -27,11 +27,7 @@ ul {
 
 /* ALERTS */
 
-#success-alert {
-  display: none;
-}
-
-#fail-alert {
+#alert {
   display: none;
 }
 

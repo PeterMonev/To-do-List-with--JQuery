@@ -2,51 +2,58 @@ $(document).ready(function () {
   getLocalStorage();
 });
 
-$("#clearBtn").click(clearAllList)
+$("#clearBtn").click(clearAllList);
 
 $("#addBtn").click(function (event) {
   event.preventDefault();
   const task = $("#todoInput").val();
-  let alert = "";
 
   if (task) {
-    alert = "success";
     addLocalStorage(task);
+    alertNotification("Successfully entered a task!", "alert alert-success");
     $("#todoInput").val("");
   } else {
-    alert = "fail";
+    alertNotification("Please write something!", "alert alert-danger");
   }
-
-  // alert timeout functionality
-  $(`#${alert}-alert`).fadeIn();
-  setTimeout(function () {
-    $(`#${alert}-alert`).fadeOut();
-  }, 2000);
 });
+
+// LOCAL STORAGE FUNCTIONALITY
+
+// Creating functionality
 
 function addLocalStorage(task) {
   const id = new Date().getTime().toString();
   let taskObj = { id, value: task };
-  let tasks = JSON.parse(localStorage.getItem("tasks")) ? JSON.parse(localStorage.getItem("tasks")) : [];
+  let tasks = JSON.parse(localStorage.getItem("tasks"))
+    ? JSON.parse(localStorage.getItem("tasks"))
+    : [];
   tasks.push(taskObj);
 
   localStorage.setItem("tasks", JSON.stringify(tasks));
   getLocalStorage();
 }
 
+// Adding functionality
+
 function getLocalStorage() {
   const tasks = JSON.parse(localStorage.getItem("tasks"));
   $("#todoList").empty();
-  tasks.forEach((task) => {
-    createLi(task.value);
-  });
+  if (tasks !== null) {
+    tasks.forEach((task) => {
+      createLi(task.value);
+    });
+  }
 }
 
-function clearAllList(){
+// Clear functionality
+
+function clearAllList() {
   localStorage.clear();
   getLocalStorage();
+  alertNotification("Clear all list!", "alert alert-info");
 }
 
+// CREATING LIST ITEMS FUNCTIONALITY
 
 function createLi(task) {
   $("#todoList").append(
@@ -67,4 +74,17 @@ function createLi(task) {
        </li>
     `
   );
+}
+
+// ALERT NOTIFICATION FUNCTIONALITY
+
+function alertNotification(message, alert) {
+  $(`#alert`)
+    .fadeIn()
+    .text(message)
+    .removeClass()
+    .addClass(`${alert} text-center`);
+  setTimeout(function () {
+    $(`#alert`).fadeOut();
+  }, 2000);
 }
