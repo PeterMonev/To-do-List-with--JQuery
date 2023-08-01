@@ -1,6 +1,5 @@
 $(document).ready(function () {
   getLocalStorage();
-  
 });
 
 $("#clearBtn").click(clearAllList);
@@ -45,7 +44,22 @@ function getLocalStorage() {
     });
   }
 
-  
+  $("#todoList").sortable({
+    stop: function () {
+      const tasks = [];
+      $("#todoList li").each(function (index) {
+        $(this)
+        .find("#numberTask")
+        .text(index + 1);
+        const id = $(this).data("id");
+        const value = $(this).find("p").text();
+        const checked = $(this).find("#checkbox").is(":checked");
+        const task = { id, value, checked };
+        tasks.push(task);
+      });
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    },
+  });
 }
 
 // Clear LocalStorage functionality
@@ -61,10 +75,15 @@ function clearAllList() {
 function createLi(task) {
   $("#todoList").append(
     `
-       <li data-id="${task.id}" id="list-item" class="list-item row justify-content-between  m-4 border border-light rounded-pill">
-       <div class="col-12 col-sm-1 my-3">${$("#todoList").children().length + 1}</div>
+       <li data-id="${
+         task.id
+       }" id="list-item" class="list-item row justify-content-between  m-4 border border-light rounded-pill">
+       <div id="numberTask"  class="col-12 col-sm-1 my-3">${
+         $("#todoList").children().length + 1
+       }</div>
        <div class="col-12 col-sm-5 text-center col-5"><p class="mt-3 ${
-         task.checked ? "text-decoration-line-through" : "" }">${task.value}</p></div>
+         task.checked ? "text-decoration-line-through" : ""
+       }">${task.value}</p></div>
        <div id="divBtns" class="col-12 col-sm-6 justify-content-between py-2">
        <input id="checkbox" type="checkbox" ${task.checked ? "checked" : ""}> 
        <button id="editBtn" class="button mx-4 my-1"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="lightsalmon" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -83,7 +102,9 @@ function createLi(task) {
 // DELETE BUTTON FUNCTION
 $(document).on("click", "#deleteBtn", function () {
   const id = $(this).closest("li").data("id");
-  deleteTask(id);
+  if (confirm("Are you sure you want to delete this task?")) {
+    deleteTask(id);
+  }
 });
 
 function deleteTask(id) {
@@ -129,8 +150,6 @@ $("#editForm").submit(function (event) {
   getLocalStorage();
   $("#editModal").modal("hide");
   alertNotification("Task updated!", "alert alert-primary");
-
-  
 });
 
 // CHECHBOX FUNCTIONALITY
@@ -154,7 +173,11 @@ function checkboxTask(id, isChecked) {
 // ALERT NOTIFICATION FUNCTIONALITY
 
 function alertNotification(message, alert) {
-  $(`#alert`).fadeIn(1000).text(message).removeClass().addClass(`${alert} text-center`);
+  $(`#alert`)
+    .fadeIn(1000)
+    .text(message)
+    .removeClass()
+    .addClass(`${alert} text-center`);
   setTimeout(function () {
     $(`#alert`).fadeOut(1000);
   }, 2000);
