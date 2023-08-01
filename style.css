@@ -64,5 +64,11 @@ ul {
   text-decoration: line-through;
 }
 
+#divBtns {
+  /* margin-top: 15px; */
+}
 
-
+#checkbox {
+  height: 20px;
+  width: 20px;
+}
