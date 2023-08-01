@@ -31,6 +31,8 @@ export function getLocalStorage() {
     $(".main").hide();
   }
 
+  // Drag and Drop functionality
+
   $("#todoList").sortable({
     stop: function () {
       const tasks = [];
