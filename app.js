@@ -1,9 +1,9 @@
 import { alertNotification } from './alertNotification.js';
 import { addLocalStorage, getLocalStorage, clearAllListStorage } from './localeStorage.js'
 
-
 $(document).ready(function () {
   getLocalStorage();
+
 });
 
 // ALL BUTTONS LOGIC
