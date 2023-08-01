@@ -60,3 +60,41 @@ ul {
 }
 
 
+.text-decoration-line-through {
+  text-decoration: line-through;
+}
+
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+}
+
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+.checkbox-input:checked ~ .checkmark svg {
+  display: block;
+}
+
+.checkmark svg {
+  display: none;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
