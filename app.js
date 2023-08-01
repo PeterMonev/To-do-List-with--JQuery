@@ -31,9 +31,14 @@ $("#addBtn").click(function (event) {
 
 $(document).on("click", "#deleteBtn", function () {
   const id = $(this).closest("li").data("id");
-  if (confirm("Are you sure you want to delete this task?")) {
+  
+  $("#deleteModal").modal("show");
+
+  $("#modalDeleteBtn").click(function(){
     deleteTask(id);
-  }
+    $("#deleteModal").modal("hide");
+  })
+ 
 });
 
 function deleteTask(id) {
