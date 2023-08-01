@@ -8,28 +8,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-do List</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type="module" src="/app.js"></script>
 </head>
 
 <body class="body">
+
+    <!-- Header input -->
     <header class="col-11 mt-5 mx-auto text-center text-white bg-dark rounded-pill">
         <h1 id="title" class="title h1 pt-3 mb-2 text-center font-italic">To-do List</h1>
         <form class="col-12 pb-4">
-            <input id="todoInput" type="text" class="col-10 col-xl-4 col-md-6 col-sm-8 rounded input p-3 mt-3 " placeholder="Enter you are To-do...">
-            <button id="addBtn" type="submit" class="col-4 col-xl-1 col-md-2  col-sm-2 mt-3 rounded p-3 text-white" >Submit</button>
+            <input id="todoInput" type="text" class="col-10 col-xl-4 col-md-6 col-sm-8 rounded input p-3 mt-3 "
+                placeholder="Enter you are To-do...">
+            <button id="addBtn" type="submit"
+                class="col-4 col-xl-1 col-md-2  col-sm-2 mt-3 rounded p-3 text-white">Submit</button>
         </form>
     </header>
-      
+   
+    <!-- Main App -->
     <main class="main col-11 mx-auto text-center text-white bg-dark rounded mt-5">
-       <ul id="todoList" class="col p-2">
-    
-       </ul>
-       <button id="clearBtn" class="btn col-6 col-sm-2 col-md-2 col-xl-1 text-white p-1 mb-4 rounded-pill">Clear list!</button></b>
+        <ul id="todoList" class="col p-2">
+
+        </ul>
+        <button id="clearBtn" class="btn col-6 col-sm-2 col-md-2 col-xl-1 text-white p-1 mb-4 rounded-pill">Clear
+            list!</button></b>
     </main>
+
+    <!-- Modal -->
+    <div id="editModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="editForm">
+                    <input type="hidden" id="editId">
+                    <div class="modal-body">
+                        <label for="editValue">Task</label>
+                        <input type="text" class="form-control" id="editValue" name="editValue">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

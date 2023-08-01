@@ -58,9 +58,7 @@ function clearAllList() {
 function createLi(task) {
   $("#todoList").append(
     `
-       <li data-id="${
-         task.id
-       }" id="list-item" class="list-item row justify-content-between pt-3 m-3 border border-light rounded-pill">
+       <li data-id="${task.id}" id="list-item" class="list-item row justify-content-between pt-3 m-3 border border-light rounded-pill">
        <div class="col-1">${$("#todoList").children().length + 1}</div>
        <div class="text-center col-5"><p>${task.value}</p></div>
        <div class="col-6 justify-content-between">
@@ -89,9 +87,16 @@ function deleteTask(id) {
   tasks = tasks.filter((task) => task.id != id);
   localStorage.setItem("tasks", JSON.stringify(tasks));
 
+  if(tasks.length === 0){
+    localStorage.removeItem("tasks");
+  }
+
   getLocalStorage();
   alertNotification("Task deleted!", "alert alert-warning");
 }
+
+
+
 
 // ALERT NOTIFICATION FUNCTIONALITY
 
