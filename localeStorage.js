@@ -40,17 +40,24 @@ export function getLocalStorage() {
     start: function (e, ui) {
       draggingLi = ui.item.find("#numberTask");
     },
-
     change: function (event, ui) {
       let arrya = $("#todoList li").length;
 
       dragingIndex = ui.placeholder.index();
 
-      $("#todoList li").each(function (index) {
+      if(ui.item.index() < dragingIndex) {
+        $("#todoList li").each(function (index) {
         draggingLi.text(dragingIndex);
 
         $(this).find("#numberTask").text(index);
       });
+      } else {
+        $("#todoList li").each(function (index) {
+          $(this).find("#numberTask").text(index + 1);
+
+          $('.ui-sortable-helper').find('#numberTask').text(+dragingIndex +1);
+        })
+      }
     },
     stop: function () {
       const tasks = [];
