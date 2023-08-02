@@ -1,17 +1,15 @@
 // CREATING LIST ITEMS FUNCTIONALITY
 
-export function createLi(task) {
+export function createLi(task, index) {
     $("#todoList").append(
       `
          <li data-id="${
            task.id
          }" id="list-item" class="list-item col-12 col-sm-10 mx-auto row justify-content-between m-4 border border-light rounded-pill">
-         <div id="numberTask"  class="col-12 col-sm-1 my-3">${
-           $("#todoList").children().length + 1
-         }</div>
-         <div class="col-12 col-sm-5 text-center col-5"><p class="mt-3 ${
+         <div id="numberTask" class="col-12 col-sm-1 my-3">${index + 1}</div>
+         <div class="col-12 col-sm-5 text-center col-5 mt-3"><p id="text" class=" ${
            task.checked ? "text-decoration-line-through" : ""
-         }">${task.value}</p></div>
+         }"><strong>${task.value}</strong></p></div>
          <div id="divBtns" class="col-12 col-sm-6 py-2">
          <label class="px-2" for="exampleInput">Complete: </label>
          <input id="checkbox" class=""  type="checkbox" ${task.checked ? "checked" : ""}> 

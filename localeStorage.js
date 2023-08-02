@@ -24,8 +24,8 @@ export function getLocalStorage() {
   $("#todoList").empty();
   if (tasks !== null) {
     $(".main").show();
-    tasks.map((task) => {
-      createLi(task);
+    tasks.map((task, index) => {
+      createLi(task, index);
     });
   } else {
     $(".main").hide();
@@ -33,7 +33,25 @@ export function getLocalStorage() {
 
   // Drag and Drop functionality
 
+  let dragingIndex;
+  let draggingLi;
+
   $("#todoList").sortable({
+    start: function (e, ui) {
+      draggingLi = ui.item.find("#numberTask");
+    },
+
+    change: function (event, ui) {
+      let arrya = $("#todoList li").length;
+
+      dragingIndex = ui.placeholder.index();
+
+      $("#todoList li").each(function (index) {
+        draggingLi.text(dragingIndex);
+
+        $(this).find("#numberTask").text(index);
+      });
+    },
     stop: function () {
       const tasks = [];
       $("#todoList li").each(function (index) {
