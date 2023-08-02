@@ -35,11 +35,14 @@ export function getLocalStorage() {
 
   let dragingIndex;
   let draggingLi;
+  
 
   $("#todoList").sortable({
     start: function (e, ui) {
       draggingLi = ui.item.find("#numberTask");
+
     },
+  
     change: function (event, ui) {
       let arrya = $("#todoList li").length;
 
@@ -48,23 +51,32 @@ export function getLocalStorage() {
       if(ui.item.index() < dragingIndex) {
         $("#todoList li").each(function (index) {
         draggingLi.text(dragingIndex);
-
+   
         $(this).find("#numberTask").text(index);
+  
       });
       } else {
+       
         $("#todoList li").each(function (index) {
           $(this).find("#numberTask").text(index + 1);
 
-          $('.ui-sortable-helper').find('#numberTask').text(+dragingIndex +1);
+        if(draggingLi !== $("#todoList").children().last()){
+      
+            $('.ui-sortable-helper').find('#numberTask').text(dragingIndex +1);
+            $("#todoList").children().last().find('#numberTask').text(arrya - 1)
+    
+          } else {
+            $('.ui-sortable-helper').find('#numberTask').text(+dragingIndex +1);
+           
+          }
+        
         })
       }
     },
     stop: function () {
       const tasks = [];
       $("#todoList li").each(function (index) {
-        $(this)
-          .find("#numberTask")
-          .text(index + 1);
+        $(this).find("#numberTask").text(index + 1);
         const id = $(this).data("id");
         const value = $(this).find("p").text();
         const checked = $(this).find("#checkbox").is(":checked");
@@ -74,6 +86,7 @@ export function getLocalStorage() {
       localStorage.setItem("tasks", JSON.stringify(tasks));
     },
   });
+  
 }
 
 // Clear LocalStorage functionality
