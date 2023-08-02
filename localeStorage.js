@@ -64,7 +64,7 @@ export function getLocalStorage() {
       
             $('.ui-sortable-helper').find('#numberTask').text(dragingIndex +1);
             $("#todoList").children().last().find('#numberTask').text(arrya - 1)
-            draggingLi.text(dragingIndex);
+         
           } else {
             $('.ui-sortable-helper').find('#numberTask').text(+dragingIndex +1);
       
